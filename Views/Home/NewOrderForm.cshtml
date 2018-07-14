@@ -1,0 +1,13 @@
+@model Order
+
+
+    <form asp-action="CreateOrder" asp-controller="Home" method="POST">
+
+            <div class="form-group">
+                <span asp-validation-for="customer_name"></span>
+                <label asp-for="customer_name"></label>
+                <input type="text" asp-for="customer_name">
+            </div>
+            <input type="submit" value="create customer">
+                
+    </form>

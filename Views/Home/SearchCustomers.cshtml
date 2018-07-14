@@ -1,0 +1,33 @@
+@model List<Customer>
+
+@foreach(var customer in Model)
+{
+    <h2> Here are @customer.customer_name's orders</h2>
+    <hr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity Ordered</th>
+                <th>Order Date</th>
+            
+            </tr>
+        </thead>
+    <tbody>
+        @foreach(var customer_order in customer.customer_orders)
+            {  
+                <tr>
+                    <td>@customer_order.product_info.product_name</td>
+                    <td>@customer_order.order_quantity</td>
+                    <td>@customer_order.created_at.ToString("D")</td>
+                        
+                </tr>
+            }
+    </tbody>
+    </table>    
+}
+
+
+
+

@@ -1,0 +1,75 @@
+
+@model IndexView
+
+
+
+<h1>Add a new order</h1>
+
+        <form asp-action="CreateOrder" asp-controller="Home" method="POST">
+  
+                <div class="form-group">
+                    
+                    
+                    <p><font color="red">@TempData["CustomError"]</font></p>
+                    <p><font color="red">@TempData["CustomProductError"]</font></p>
+                    <p><font color="red">@TempData["CustomOrderError"]</font></p>
+                    <p><font color="red">@TempData["NotEnoughError"]</font></p>
+            
+                    <h3>Customer :  <select  asp-for ="Customer.customer_id" asp-items="@Model.Customers">
+                        <option>Please select a customer</option> 
+                    </select></h3>
+
+                    <h3>Product :  <select id="select" asp-for ="Product.product_id" asp-items="@Model.Products">
+                        <option>Please select a product</option> 
+                    </select></h3>
+
+                    <!--<h3>Quantity:<select asp-for="Order.order_quantity" id='some_selector'>
+                        <option>Please select a quantity</option>
+                    </select></h3>-->
+                    <div class="form-group">
+                        <span asp-validation-for="Order.order_quantity"></span>
+                        <label asp-for="Order.order_quantity"></label>
+                        <input type="number" asp-for="Order.order_quantity">
+                    </div>
+
+                </div>
+
+            <input type="submit" value="create order">            
+        </form>
+        
+     <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Date</th>
+           
+        </tr>
+    </thead>
+      <tbody>
+          
+        {  
+            @foreach(var order in Model._order)
+            {
+                <tr>
+                    <td>@order.customer_info.customer_name</td>
+                    <td>@order.product_info.product_name</td>
+                    <td>@order.order_quantity</td>
+                    <td>@order.created_at</td>
+                    
+                </tr>
+            }
+           
+        }
+        
+         
+    </tbody>
+
+    
+
+</table>
+
+    
+
+    

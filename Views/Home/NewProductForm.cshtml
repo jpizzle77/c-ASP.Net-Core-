@@ -1,0 +1,30 @@
+
+@model Product
+
+
+ <form asp-action="CreateProduct" asp-controller="Home" method="POST">
+
+                <div class="form-group">
+                    <span asp-validation-for="product_name"></span>
+                    <label asp-for="product_name"></label>
+                    <input type="text" asp-for="product_name">
+                </div>
+                <div class="form-group">
+                    <span asp-validation-for="product_description"></span>
+                    <label asp-for="product_description"></label>
+                    <input type="text" asp-for="product_description">
+                </div>
+                <div class="form-group">
+                    <span asp-validation-for="product_quantity"></span>
+                    <label asp-for="product_quantity"></label>
+                    <input type="number" asp-for="product_quantity">
+                </div>
+                <div class="form-group">
+                    <span asp-validation-for="product_image"></span>
+                    <label asp-for="product_image"></label>
+                    <input type="text" asp-for="product_image" value="http://">
+                </div>
+               
+                    <input type="submit" value="submit">
+                
+            </form>
